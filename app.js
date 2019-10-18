@@ -4,26 +4,31 @@ let model = {
   cats : [
     {
       click_count: 0,
+      star: 0,
       name: "cat",
       imgsrc: "cat.jpg"
     },
     {
       click_count: 0,
+      star: 0,
       name: "cat1",
       imgsrc: "cat1.jpg"
     },
     {
       click_count: 0,
+      star: 0,
       name: "cat2",
       imgsrc: "cat2.jpg"
     },
     {
       click_count: 0,
+      star: 0,
       name: "cat3",
       imgsrc: "cat3.jpg"
     },
     {
       click_count: 0,
+      star: 0,
       name: "cat4",
       imgsrc: "cat4.jpg"
     }
@@ -31,7 +36,7 @@ let model = {
 }
 
 //--------------------------Octopus----------------------//
-var octopus = {
+let octopus = {
 
   init: function(){
     model.activeCat = model.cats[0];
@@ -59,7 +64,7 @@ var octopus = {
 
 
 //--------------------------View-------------------------//
-var catView = {
+let catView = {
 
   init: function() {
     this.catContent = document.getElementById('main-content');
@@ -74,15 +79,14 @@ var catView = {
   },
 
   render: function(){
-    var currentCat = octopus.getActiveCat();
+    let currentCat = octopus.getActiveCat();
     this.catName.textContent = currentCat.name;
     this.catImage.src = currentCat.imgsrc;
     this.catClicks.textContent = currentCat.click_count;
-    console.log(currentCat.click_count);
   }
 }
 
-var catListView = {
+let catListView = {
 
   init: function() {
     this.listElem = document.getElementById('cat-ul');
@@ -91,10 +95,9 @@ var catListView = {
   },
 
   render: function(){
-    var liElem, i;
-    console.log(this.listElem);
-    this.cats.forEach(function(cat){
-      return function(listElem){
+
+    let liElem, i;
+    this.cats.forEach((cat) => {
       liElem = document.createElement('li');
       liElem.textContent = cat.name;
 
@@ -106,8 +109,7 @@ var catListView = {
       })(cat));
 
       this.listElem.appendChild(liElem);
-    }
-  });
+    });
   }
 }
 
